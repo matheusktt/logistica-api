@@ -5,7 +5,7 @@ public class Client {
     private Long id;
     private String nome;
     private String email;
-    private String telefone;
+    private String phone;
 
     public Long getId() {
         return id;
@@ -31,11 +31,11 @@ public class Client {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
