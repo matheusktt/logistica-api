@@ -13,6 +13,10 @@ public class ClientService {
 
     private ClientRepository clientRepository;
 
+    public Client findClient(Long clientId){
+        return clientRepository.findById(clientId).orElseThrow(() -> new DomainException("Client not found"));
+    }
+
     @Transactional
     public Client saveClient(Client client) {
 
