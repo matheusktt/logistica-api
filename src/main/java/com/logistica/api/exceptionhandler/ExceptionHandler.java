@@ -1,6 +1,7 @@
 package com.logistica.api.exceptionhandler.exceptionhandler;
 
 import com.logistica.domain.exception.DomainException;
+import com.logistica.domain.exception.EntityNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,19 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         problems.setTitle("Invalid arguments");
         problems.setFields(fieldsList);
         return handleExceptionInternal(ex, problems, headers, status, request);
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException ex, WebRequest request) {
+
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        com.logistica.api.exceptionhandler.exceptionhandler.Problems problems = new com.logistica.api.exceptionhandler.exceptionhandler.Problems();
+        problems.setStatus(status.value());
+        problems.setHour(OffsetDateTime.now());
+        problems.setTitle(ex.getMessage());
+
+        return handleExceptionInternal(ex, problems, new HttpHeaders(), status, request);
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(DomainException.class)

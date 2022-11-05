@@ -1,18 +1,14 @@
 package com.logistica.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.logistica.domain.ValidationGroups;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.groups.ConvertGroup;
-import javax.validation.groups.Default;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,7 +21,6 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @ManyToOne
     private Client client;
 
@@ -34,10 +29,24 @@ public class Delivery {
 
     private BigDecimal tax;
 
+    @OneToMany(mappedBy = "delivery", cascade = CascadeType.ALL)
+    private List<Occurrence> occurrenceList = new ArrayList<>();
+
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
     private OffsetDateTime dateOrder;
 
     private OffsetDateTime dateFinished;
+
+    public Occurrence addOccurrence(String description) {
+        Occurrence occurrence = new Occurrence();
+        occurrence.setDescription(description);
+        occurrence.setRegistrationDate(OffsetDateTime.now());
+        occurrence.setDelivery(this);
+
+        this.getOccurrenceList().add(occurrence);
+
+        return occurrence;
+    }
 }
