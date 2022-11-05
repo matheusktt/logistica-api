@@ -12,7 +12,7 @@ import java.time.OffsetDateTime;
 public class DeliveryModel {
 
     private Long id;
-    private String clientName;
+    private ClientModelResume client;
     private AddresseeModel addressee;
     private BigDecimal tax;
     private DeliveryStatus deliveryStatus;

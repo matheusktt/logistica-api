@@ -25,27 +25,19 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Valid
-    @ConvertGroup(from = Default.class, to = ValidationGroups.ClientId.class)
     @NotNull
     @ManyToOne
     private Client client;
 
-    @Valid
-    @NotNull
     @Embedded
     private Addressee addressee;
 
-    @NotNull
     private BigDecimal tax;
 
     @Enumerated(EnumType.STRING)
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private DeliveryStatus status;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private OffsetDateTime dateOrder;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private OffsetDateTime dateFinished;
 }

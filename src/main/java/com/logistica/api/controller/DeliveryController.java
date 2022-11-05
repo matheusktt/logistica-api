@@ -3,6 +3,7 @@ package com.logistica.api.controller;
 import com.logistica.api.assembler.AssemblerDelivery;
 import com.logistica.api.model.AddresseeModel;
 import com.logistica.api.model.DeliveryModel;
+import com.logistica.api.model.input.DeliveryInput;
 import com.logistica.domain.model.Delivery;
 import com.logistica.domain.repository.DeliveryRepository;
 import com.logistica.domain.services.DeliveryService;
@@ -26,8 +27,9 @@ public class DeliveryController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DeliveryModel createDelivery(@Valid @RequestBody Delivery delivery) {
-        Delivery createDelivery = deliveryService.requestDelivery(delivery);
+    public DeliveryModel createDelivery(@Valid @RequestBody DeliveryInput deliveryInput) {
+        Delivery newDelivery = assemblerDelivery.toEntity(deliveryInput);
+        Delivery createDelivery = deliveryService.requestDelivery(newDelivery);
         return assemblerDelivery.toModel(createDelivery);
     }
 

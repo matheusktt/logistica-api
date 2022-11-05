@@ -1,6 +1,7 @@
 package com.logistica.api.assembler;
 
 import com.logistica.api.model.DeliveryModel;
+import com.logistica.api.model.input.DeliveryInput;
 import com.logistica.domain.model.Delivery;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -21,5 +22,9 @@ public class AssemblerDelivery {
 
     public List<DeliveryModel> toCollectionModel(List<Delivery> deliveries) {
         return deliveries.stream().map(this::toModel).collect(Collectors.toList());
+    }
+
+    public Delivery toEntity(DeliveryInput deliveryInput) {
+        return modelMapper.map(deliveryInput, Delivery.class);
     }
 }
