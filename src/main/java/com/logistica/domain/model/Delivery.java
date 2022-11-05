@@ -1,5 +1,6 @@
 package com.logistica.domain.model;
 
+import com.logistica.domain.exception.DomainException;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -48,5 +49,17 @@ public class Delivery {
         this.getOccurrenceList().add(occurrence);
 
         return occurrence;
+    }
+
+    public void finishDelivery() {
+        if (!canBeFinished()) {
+            throw new DomainException("Delivery cannot be completed.");
+        }
+        setStatus(DeliveryStatus.FINISHED);
+        setDateFinished(OffsetDateTime.now());
+    }
+
+    public boolean canBeFinished() {
+        return DeliveryStatus.PENDING.equals(getStatus());
     }
 }
