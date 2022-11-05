@@ -13,7 +13,7 @@ public class DeliveryModel {
 
     private Long id;
     private String clientName;
-    private AddresseeModel addresseeModel;
+    private AddresseeModel addressee;
     private BigDecimal tax;
     private DeliveryStatus deliveryStatus;
     private OffsetDateTime dateOrder;
