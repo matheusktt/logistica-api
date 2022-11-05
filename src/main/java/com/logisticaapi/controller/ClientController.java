@@ -2,6 +2,7 @@ package com.logisticaapi.controller;
 
 import com.logisticaapi.domain.model.Client;
 import com.logisticaapi.domain.repository.ClientRepository;
+import com.logisticaapi.domain.services.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import java.util.Optional;
 public class ClientController {
 
     private ClientRepository clientRepository;
+    private ClientService clientService;
 
     @GetMapping
     public List<Client> list() {
@@ -42,7 +44,8 @@ public class ClientController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Client addClient(@Valid @RequestBody Client client) {
-        return clientRepository.save(client);
+//        return clientRepository.save(client);
+        return clientService.saveClient(client);
     }
 
     @PutMapping("/{clientId}")
@@ -51,7 +54,8 @@ public class ClientController {
             return ResponseEntity.notFound().build();
         }
         client.setId(clientId);
-        client = clientRepository.save(client);
+//        client = clientRepository.save(client);
+        client = clientService.saveClient(client);
 
         return ResponseEntity.ok(client);
     }
@@ -62,7 +66,8 @@ public class ClientController {
             return ResponseEntity.notFound().build();
         }
 
-        clientRepository.deleteById(clientId);
+//        clientRepository.deleteById(clientId);
+        clientService.deleteClient(clientId);
 
         return ResponseEntity.noContent().build();
     }

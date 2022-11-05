@@ -1,5 +1,6 @@
 package com.logisticaapi.exceptionhandler;
 
+import com.logisticaapi.domain.exception.DomainException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,5 +34,18 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         problems.setTitle("Invalid arguments");
         problems.setFields(fieldsList);
         return handleExceptionInternal(ex, problems, headers, status, request);
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(DomainException.class)
+    public ResponseEntity<Object> handleDomain(DomainException ex, WebRequest request) {
+
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        Problems problems = new Problems();
+        problems.setStatus(status.value());
+        problems.setHour(LocalDateTime.now());
+        problems.setTitle(ex.getMessage());
+
+        return handleExceptionInternal(ex, problems, new HttpHeaders(), status, request);
     }
 }
