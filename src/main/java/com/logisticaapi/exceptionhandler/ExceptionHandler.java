@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
         Problems problems = new Problems();
         problems.setStatus(status.value());
-        problems.setHour(LocalDateTime.now());
+        problems.setHour(OffsetDateTime.now());
         problems.setTitle("Invalid arguments");
         problems.setFields(fieldsList);
         return handleExceptionInternal(ex, problems, headers, status, request);
@@ -43,7 +43,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
         Problems problems = new Problems();
         problems.setStatus(status.value());
-        problems.setHour(LocalDateTime.now());
+        problems.setHour(OffsetDateTime.now());
         problems.setTitle(ex.getMessage());
 
         return handleExceptionInternal(ex, problems, new HttpHeaders(), status, request);
