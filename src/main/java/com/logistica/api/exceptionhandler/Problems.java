@@ -1,4 +1,4 @@
-package com.logisticaapi.exceptionhandler;
+package com.logistica.api.exceptionhandler.exceptionhandler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

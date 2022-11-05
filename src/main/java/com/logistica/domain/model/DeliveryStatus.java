@@ -1,4 +1,4 @@
-package com.logisticaapi.domain.model;
+package com.logistica.domain.model;
 
 public enum DeliveryStatus {
 

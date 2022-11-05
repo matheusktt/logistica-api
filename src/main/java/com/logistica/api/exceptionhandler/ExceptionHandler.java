@@ -1,6 +1,6 @@
-package com.logisticaapi.exceptionhandler;
+package com.logistica.api.exceptionhandler.exceptionhandler;
 
-import com.logisticaapi.domain.exception.DomainException;
+import com.logistica.domain.exception.DomainException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,15 +20,15 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-        List<Problems.Fields> fieldsList = new ArrayList<>();
+        List<com.logistica.api.exceptionhandler.exceptionhandler.Problems.Fields> fieldsList = new ArrayList<>();
 
         for (ObjectError error : ex.getBindingResult().getAllErrors()) {
             String nameField = ((FieldError) error).getField();
             String message = error.getDefaultMessage();
-            fieldsList.add(new Problems.Fields(nameField, message));
+            fieldsList.add(new com.logistica.api.exceptionhandler.exceptionhandler.Problems.Fields(nameField, message));
         }
 
-        Problems problems = new Problems();
+        com.logistica.api.exceptionhandler.exceptionhandler.Problems problems = new com.logistica.api.exceptionhandler.exceptionhandler.Problems();
         problems.setStatus(status.value());
         problems.setHour(OffsetDateTime.now());
         problems.setTitle("Invalid arguments");
@@ -41,7 +41,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
-        Problems problems = new Problems();
+        com.logistica.api.exceptionhandler.exceptionhandler.Problems problems = new com.logistica.api.exceptionhandler.exceptionhandler.Problems();
         problems.setStatus(status.value());
         problems.setHour(OffsetDateTime.now());
         problems.setTitle(ex.getMessage());

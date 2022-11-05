@@ -1,4 +1,4 @@
-package com.logisticaapi.domain.exception;
+package com.logistica.domain.exception;
 
 public class DomainException extends RuntimeException {
 

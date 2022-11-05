@@ -1,6 +1,6 @@
-package com.logisticaapi.domain.repository;
+package com.logistica.domain.repository;
 
-import com.logisticaapi.domain.model.Client;
+import com.logistica.domain.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

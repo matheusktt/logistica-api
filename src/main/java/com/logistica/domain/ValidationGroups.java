@@ -1,4 +1,4 @@
-package com.logisticaapi.domain;
+package com.logistica.domain;
 
 public interface ValidationGroups {
 

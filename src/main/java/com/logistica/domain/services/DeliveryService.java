@@ -1,9 +1,9 @@
-package com.logisticaapi.domain.services;
+package com.logistica.domain.services;
 
-import com.logisticaapi.domain.model.Client;
-import com.logisticaapi.domain.model.Delivery;
-import com.logisticaapi.domain.model.DeliveryStatus;
-import com.logisticaapi.domain.repository.DeliveryRepository;
+import com.logistica.domain.model.Client;
+import com.logistica.domain.model.Delivery;
+import com.logistica.domain.model.DeliveryStatus;
+import com.logistica.domain.repository.DeliveryRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

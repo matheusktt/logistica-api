@@ -1,11 +1,10 @@
-package com.logisticaapi.domain.model;
+package com.logistica.domain.model;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 
 @Getter

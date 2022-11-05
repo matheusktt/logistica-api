@@ -1,7 +1,7 @@
-package com.logisticaapi.domain.model;
+package com.logistica.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.logisticaapi.domain.ValidationGroups;
+import com.logistica.domain.ValidationGroups;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

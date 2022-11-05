@@ -1,8 +1,8 @@
-package com.logisticaapi.controller;
+package com.logistica.api.controller;
 
-import com.logisticaapi.domain.model.Delivery;
-import com.logisticaapi.domain.repository.DeliveryRepository;
-import com.logisticaapi.domain.services.DeliveryService;
+import com.logistica.domain.model.Delivery;
+import com.logistica.domain.repository.DeliveryRepository;
+import com.logistica.domain.services.DeliveryService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

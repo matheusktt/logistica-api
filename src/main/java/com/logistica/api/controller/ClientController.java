@@ -1,20 +1,15 @@
-package com.logisticaapi.controller;
+package com.logistica.api.controller;
 
-import com.logisticaapi.domain.model.Client;
-import com.logisticaapi.domain.repository.ClientRepository;
-import com.logisticaapi.domain.services.ClientService;
+import com.logistica.domain.model.Client;
+import com.logistica.domain.repository.ClientRepository;
+import com.logistica.domain.services.ClientService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @RestController

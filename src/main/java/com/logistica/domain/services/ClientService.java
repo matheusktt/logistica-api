@@ -1,8 +1,8 @@
-package com.logisticaapi.domain.services;
+package com.logistica.domain.services;
 
-import com.logisticaapi.domain.exception.DomainException;
-import com.logisticaapi.domain.model.Client;
-import com.logisticaapi.domain.repository.ClientRepository;
+import com.logistica.domain.exception.DomainException;
+import com.logistica.domain.model.Client;
+import com.logistica.domain.repository.ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
